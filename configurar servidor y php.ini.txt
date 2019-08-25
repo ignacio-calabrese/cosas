@@ -1,0 +1,18 @@
+Para mostrar ERRORES de PHP
+
+EN php.ini modificar
+
+display_errors = On
+y
+
+error_reporting=E_ALL & ~E_NOTICE
+
+Para activar iniex de archivos y carpetas del servidor
+
+EN \Apache24\conf/httpd.conf modificar
+
+<Directory "${SRVROOT}/cgi-bin">
+    Options +Indexes
+</Directory>
+
+Opcionalmente eliminar index.php del servidor
