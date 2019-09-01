@@ -99,7 +99,7 @@
 <label for="color">COLOR:</label>
 <input type="text" name="color" id="color">
 
-
+<h2>Ventana de diálogo</h2>
 <div id="dialogo" title="Ventana de díalogo">
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sequi facere enim ipsa suscipit, voluptate unde explicabo quas deleniti labore incidunt illum sunt commodi porro, eos, numquam cupiditate fuga asperiores.
@@ -107,7 +107,31 @@
 </div>
 <button id="ventana">Mostrar ventana</button>
 
+<h2>Progressbar</h2>
+<div id="progreso"></div>
 
+<h2>Slider</h2>
+<div id="volumen"></div>
+<p id="rangoA"></p>
+<p id="rangoB"></p>
+
+<h2>Tabs</h2>
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-1">Título 1</a></li>
+        <li><a href="#tab-2">Título 2</a></li>
+        <li><a href="#tab-3">Título 3</a></li>
+    </ul>
+    <div id="tab-1">
+        <p>Tab1: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias doloremque libero iusto harum soluta amet vel quisquam reprehenderit? Magnam magni iusto aliquam delectus repellendus placeat architecto fuga excepturi nesciunt. Officiis!</p>
+    </div>
+    <div id="tab-2">
+        <p>Tab2: Quisquam fugiat autem quam quaerat accusamus quod doloribus laborum reprehenderit? Rem accusamus tempora, eveniet qui esse consequuntur iste voluptatibus saepe labore ab? Laudantium aperiam officia voluptates obcaecati similique veniam molestiae!</p>
+    </div>
+    <div id="tab-3">
+        <p>Tab3: Voluptatum velit impedit nobis aspernatur odit laudantium. Delectus pariatur beatae quidem amet itaque sint harum est praesentium libero corrupti laborum accusantium animi at deserunt aliquam, iure eius deleniti sequi consectetur.</p>
+    </div>
+</div>
 
 <script src="//code.jquery.com/jquery-1.12.4.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -207,6 +231,29 @@
         });
         $("#ventana").click(function() {
             $("#dialogo").dialog("open");
+        });
+
+        var contador = 0;
+        $("#progreso").progressbar({value: false});
+        setInterval(() => {
+            contador+=5;
+            $("#progreso").progressbar("value", contador);
+        }, 1000);
+
+
+        $("#volumen").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 250],
+            slide: function(event, ui) {
+                $("#rangoA").text(ui.values[0]);
+                $("#rangoB").text(ui.values[1]);
+            }
+        });
+
+        $("#tabs").tabs({
+            event: "mouseover"
         });
     });
 </script>
