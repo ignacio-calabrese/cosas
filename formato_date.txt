@@ -1,0 +1,6 @@
+SELECT DATE_FORMAT("2018-06-15","%Y-%m-%d"); // 2018-06-15 
+SELECT DATE(now()); // 2019-09-10
+SELECT DATE_FORMAT(now(),"%Y-%m-%d"); // 2019-09-10
+
+// En PHP
+$sql = "SELECT * FROM posts WHERE post_date <= '" . $from_date . "'";
