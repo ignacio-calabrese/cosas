@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+	<input type='date' min='1900-01-01' max="">
+
+	<script>
+		$('[type="date"]').prop('max', function(){
+			return new Date().toJSON().split('T')[0];
+		});
+		$('[type="date"]').on("blur", function(){
+			if ($(this).val() < $(this).prop('min')) {
+				alert("La fecha no puede ser menor a " + $(this).prop('min')
+					.replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, function(match,y,m,d) { 
+			        	return d + '/' + m + '/' + y;  
+			    	}) 
+			    );
+			    return false;
+			} else if ($(this).val() > $(this).prop('max')) {
+				alert("La fecha no puede ser mayor a " + $(this).prop('max')
+					.replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, function(match,y,m,d) { 
+			        	return (d -1) + '/' + m + '/' + y;  
+			    	}) 
+			    );
+			    return false;
+			}
+		});
+	</script>
+</body>
+</html>
