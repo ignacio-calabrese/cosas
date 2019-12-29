@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="webcam"></div>
+    <button id="take">Tomar foto</button>
+    <div id="say-cheese-snapshots"></div>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="say-cheese.js"></script>
+    <script>
+        var img = null;
+        var sayCheese = new SayCheese('#webcam', { audio: true, snapshots:true, width:320 });
+                
+        
+        sayCheese.start();
+        
+        $("#take").on("click", function(){
+            sayCheese.takeSnapshot(320,240);
+        });
+        
+        sayCheese.on('snapshot', function(snapshot) {
+            // a snapshot has been taken, do something with it :)
+            img = $('<img src="" alt="">');
+            $(img).on("load",function(){
+                $("#say-cheese-snapshots").prepend(img);
+            });
+            img.src = snapshot.toDataURL("image/png");
+
+        });
+          
+    </script>
+</body>
+</html>
