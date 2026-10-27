@@ -28,7 +28,7 @@
 			} else if ($(this).val() > $(this).prop('max')) {
 				alert("La fecha no puede ser mayor a " + $(this).prop('max')
 					.replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, function(match,y,m,d) { 
-			        	return (d -1) + '/' + m + '/' + y;  
+			        	return d + '/' + m + '/' + y;  
 			    	}) 
 			    );
 			    return false;
